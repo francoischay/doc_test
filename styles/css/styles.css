@@ -1,0 +1,197 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", "Helvetica", sans;
+  padding: 0;
+  margin: 0;
+}
+body,
+html {
+  background: #ffe8d2;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+#main {
+  top: 60px;
+  position: relative;
+  height: 200%;
+  width: 200%;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+}
+#main.zoomed .part {
+  cursor: auto;
+  overflow: auto;
+}
+#main.zoomed.part-0 {
+  -webkit-transform: scale(1) translate3d(0, 0, 0);
+  -moz-transform: scale(1) translate3d(0, 0, 0);
+  -ms-transform: scale(1) translate3d(0, 0, 0);
+  -o-transform: scale(1) translate3d(0, 0, 0);
+}
+#main.zoomed.part-1 {
+  -webkit-transform: scale(1) translate3d(-50%, 0, 0);
+  -moz-transform: scale(1) translate3d(-50%, 0, 0);
+  -ms-transform: scale(1) translate3d(-50%, 0, 0);
+  -o-transform: scale(1) translate3d(-50%, 0, 0);
+}
+#main.zoomed.part-2 {
+  -webkit-transform: scale(1) translate3d(0, calc(-50% + 30px), 0);
+  -moz-transform: scale(1) translate3d(0, calc(-50% + 30px), 0);
+  -ms-transform: scale(1) translate3d(0, calc(-50% + 30px), 0);
+  -o-transform: scale(1) translate3d(0, calc(-50% + 30px), 0);
+}
+#main.zoomed.part-3 {
+  -webkit-transform: scale(1) translate3d(-50%, calc(-50% + 30px), 0);
+  -moz-transform: scale(1) translate3d(-50%, calc(-50% + 30px), 0);
+  -ms-transform: scale(1) translate3d(-50%, calc(-50% + 30px), 0);
+  -o-transform: scale(1) translate3d(-50%, calc(-50% + 30px), 0);
+}
+.part {
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  height: calc(50% - 30px);
+  width: 50%;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+}
+.part:nth-child(1) .part-header {
+  background: #007d68;
+}
+.part:nth-child(2) .part-header {
+  background: #ffd100;
+}
+.part:nth-child(3) .part-header {
+  background: #18475d;
+}
+.part:nth-child(4) .part-header {
+  background: #960032;
+}
+.part.zoomed-in .part-header {
+  height: 288px;
+}
+.part.zoomed-in .part-header h2 {
+  font-family: "league gothic";
+  font-weight: normal;
+  top: 25%;
+}
+.part.zoomed-in .part-content {
+  display: block;
+  opacity: 1;
+}
+.part h2 {
+  color: white;
+  font-size: 48px;
+  height: 144px;
+  line-height: 144px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: 50%;
+  -webkit-transform: translate3d(0, -76px, 0);
+  -moz-transform: translate3d(0, -76px, 0);
+  -ms-transform: translate3d(0, -76px, 0);
+  -o-transform: translate3d(0, -76px, 0);
+}
+.part-header {
+  height: 100%;
+  padding: 0 10%;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+}
+.part-header .button-back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  height: 144px;
+  line-height: 144px;
+  position: absolute;
+  opacity: 0;
+  top: 0%;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+}
+.part-header .button-back.show {
+  opacity: 1;
+}
+.part-content {
+  background: white;
+  opacity: 0;
+  display: none;
+  left: 10%;
+  position: absolute;
+  width: 80%;
+  height: 2000px;
+  top: 144px;
+}
+.content-actions {
+  padding: 12px 24px;
+}
+#login {
+  background: rgba(45, 40, 70, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#login .modal {
+  width: 30%;
+  background: white;
+  border-radius: 3px;
+  padding: 48px;
+}
+nav {
+  display: none;
+  background: white;
+  padding: 6px 24px;
+  height: 60px;
+  width: 100%;
+  z-index: 10;
+  position: absolute;
+}
+nav #profile {
+  float: right;
+  line-height: calc(48px);
+}
+nav #profile img {
+  margin-right: 12px;
+  float: left;
+}
+nav #profile button {
+  background: none;
+  padding: 0;
+}
+button {
+  min-height: 48px;
+  padding: 6px 12px;
+  border: none;
+}
+input {
+  min-height: 48px;
+  line-height: 48px;
+}
