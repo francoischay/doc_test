@@ -5,7 +5,7 @@ require('./scripts');
 
 React.render(
   React.createElement(Grid, {
-  	parts: ["Ressources", "Print Material", "Host's kit", "Mamassembly's Material"]
+    parts: ["Ressources", "Print Material", "Host's kit", "Mamassembly's Material"]
   }),
   document.getElementById('main')
 );

@@ -1,5 +1,5 @@
 var React = require('react');
-var Part = require('./part.jsx');
+var Part = require('./Part.jsx');
 
 var Grid = React.createClass({
   getInitialState: function() {
@@ -21,13 +21,13 @@ var Grid = React.createClass({
     var zoomClass = (this.state.partZoomed == null) ? "not-zoomed" : "zoomed part-"+this.state.partZoomed;
 
     return (
-    	<div id="grid" className={zoomClass}>
+      <div id="grid" className={zoomClass}>
         {this.props.parts.map(function(part, i) {
           return (
             <Part onClick={this.handleClick} title={part} key={i} partId={i}></Part>
           );
         }, this)}
-    	</div>
+      </div>
     );
   }
 });

@@ -1,13 +1,13 @@
 var React = require('react');
-var ButtonAddFolder = require('./buttonAddFolder.jsx');
+var ButtonAddFolder = require('./ButtonAddFolder.jsx');
 
 var PartContent = React.createClass({
-  render: function(){
+  render: function() {
     return (
-		<div className="part-content">
-			<ButtonAddFolder />
-		</div>
-	);
+      <div className="part-content">
+        <ButtonAddFolder />
+      </div>
+    );
   }
 });
 

@@ -3,8 +3,8 @@ var React = require('react');
 var ButtonAddFolder = React.createClass({
   render: function(){
     return (
-		<button>Add a Folder</button>
-	);
+      <button>Add a Folder</button>
+    );
   }
 });
 
