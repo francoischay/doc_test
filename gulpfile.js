@@ -81,7 +81,7 @@ gulp.task('watch', ['build', 'webserver'], function() {
         return rebundle();
     });
 
-    gulp.watch(paths.styles + '/**/*.{scss,sass}', ['sass']).on('change', function(file) {
+    gulp.watch('styles/**/*.less', ['less']).on('change', function(file) {
         console.log(file.path + ' changed !');
     });
 });
