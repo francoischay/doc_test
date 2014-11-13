@@ -10,12 +10,12 @@ var gulp = require('gulp'),
   _ = require('underscore'),
   source = require('vinyl-source-stream'),
   envify = require('envify/custom'),
-  reactify = require('reactify');
+  reactify = require('reactify'),
+  sourcemaps = require('gulp-sourcemaps');
 
-
-var envString = process.env.NODE_ENV || 'development';
-
-var debug = false;
+var development = 'development';
+var envString = process.env.NODE_ENV || development;
+var debug = envString === development;
 
 var paths = {
   root: __dirname,
@@ -35,10 +35,12 @@ function rebundle() {
       gutil.log('Browserify bundle error !');
       reject(event);
     })
-    .on('file', function(file, id, parent) {
-      if (!debug) return;
-      console.log(file);
-    })
+    //.on('file', function(file, id, parent) {
+    //  //This is to debug if you want a quick & dirty way
+    //  //to see all files compiled into the bundle
+    //  if (!debug) return;
+    //  console.log(file);
+    //})
     .pipe(source('main.js'))
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest(paths.root))
@@ -51,6 +53,7 @@ function rebundle() {
 
 gulp.task('browserify', function() {
   var opts = _.defaults(watchify.args, {
+    debug: debug,
     transform: [
       [
         "reactify", {
@@ -64,9 +67,12 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('less', function() {
-  gulp.src('styles/less/*')
+  gulp.src(paths.styles + '/main.less')
+    .pipe(sourcemaps.init())
     .pipe(less())
-    .pipe(gulp.dest('dist/styles/'))
+    .pipe(sourcemaps.write())
+    .pipe(rename('bundle.css'))
+    .pipe(gulp.dest(paths.root))
     .pipe(connect.reload());
 });
 
@@ -84,7 +90,7 @@ gulp.task('watch', ['build', 'webserver'], function() {
     return rebundle();
   });
 
-  gulp.watch('./styles/**/*.less', ['less']).on('change', function(file) {
+  gulp.watch(paths.styles + '/**/*.less', ['less']).on('change', function(file) {
     console.log(file.path + ' changed !');
   });
 });
