@@ -68,9 +68,9 @@ gulp.task('browserify', function() {
 
 gulp.task('less', function() {
   gulp.src(paths.styles + '/main.less')
-    .pipe(sourcemaps.init())
+    .pipe(debug ? sourcemaps.init() : gutil.noop())
     .pipe(less())
-    .pipe(sourcemaps.write())
+    .pipe(debug ? sourcemaps.write() : gutil.noop())
     .pipe(rename('bundle.css'))
     .pipe(gulp.dest(paths.root))
     .pipe(connect.reload());
